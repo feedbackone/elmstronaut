@@ -1,0 +1,15 @@
+/* Tailwind (with disabled Preflight) */
+@layer theme, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/**
+ * This ensures that the classes used in the Elm files
+ * would be included in the final bundle.
+ */
+@source "../../src/elm";
+
+/* General */
+:root {
+	font-family: var(--font-sans);
+}

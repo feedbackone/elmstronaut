@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Elmstronaut</title>
+  </head>
+  <body>
+    <nav>
+      <ul role="list">
+        <li>
+          <a href="/">Hello</a>
+        </li>
+        <li>
+          <a href="/counter">Counter</a>
+        </li>
+        <li>
+          <a href="/prompt">Prompt</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="p-4">
+      <slot />
+    </main>
+  </body>
+</html>

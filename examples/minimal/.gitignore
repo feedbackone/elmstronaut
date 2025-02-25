@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Astro
+.astro/
+
+# Elm
+elm-stuff

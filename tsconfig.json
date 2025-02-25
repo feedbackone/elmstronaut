@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		/* Language and Environment */
+		"target": "ES2023",
+		"moduleDetection": "force",
+
+		/* Modules */
+		"module": "NodeNext",
+
+		/* Emit */
+		"declaration": true,
+		"sourceMap": true,
+		"outDir": "dist",
+
+		/* Interop Constraints */
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+
+		/* Type Checking */
+		"strict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+
+		/* Completeness */
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*.ts"]
+}
