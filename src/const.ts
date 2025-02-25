@@ -10,9 +10,9 @@ export const PACKAGE_ROOT_DIR = path.join(import.meta.dirname, "..");
  * with the correct arguments, and ensures that it is defined only once.
  */
 export const BOOTSTRAP_SCRIPT_PATH = path.join(
-	import.meta.dirname,
-	"static",
-	"bootstrap.js",
+  import.meta.dirname,
+  "static",
+  "bootstrap.js",
 );
 
 /**
@@ -23,7 +23,7 @@ export const BOOTSTRAP_SCRIPT_PATH = path.join(
  * types for `window.onElmInit`, and more.
  */
 export const ELMSTRONAUT_D_TS_PATH = path.join(
-	import.meta.dirname,
-	"static",
-	"elmstronaut.d.ts",
+  import.meta.dirname,
+  "static",
+  "elmstronaut.d.ts",
 );

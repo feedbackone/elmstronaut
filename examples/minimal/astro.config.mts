@@ -5,8 +5,8 @@ import elmstronaut from "../../src/index";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [elmstronaut()],
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  integrations: [elmstronaut()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
