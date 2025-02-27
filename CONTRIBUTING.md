@@ -1,4 +1,4 @@
-# Contributing guide
+# Contributing
 
 Thanks for your interest in helping improve Elmstronaut!
 
