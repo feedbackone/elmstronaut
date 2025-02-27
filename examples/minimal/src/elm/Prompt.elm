@@ -1,9 +1,8 @@
 port module Prompt exposing (main)
 
 import Browser
-import Html exposing (Html, button, dd, div, dl, dt, p, text)
+import Html exposing (Html, button, dd, div, dl, dt, text)
 import Html.Events exposing (onClick)
-import Json.Decode
 
 
 
@@ -67,7 +66,7 @@ update msg model =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     fromJs GotAnswer
 
 
