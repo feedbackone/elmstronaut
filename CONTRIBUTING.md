@@ -3,7 +3,7 @@
 Thanks for your interest in helping improve Elmstronaut!
 
 ## Local development environment
-First things first, follow the installation and setup guides in [README.md](/README.md) to set up Elmstronaut. Once you're done with that, follow these steps to set up your local development environment:
+To get started, follow the [installation](/README.md#installation) and [setup](README.md#setup) steps in [README.md](/README.md) to set up Elmstronaut. Once you're done with that, follow these steps to set up your local development environment:
 
 1.  Clone this repo
     ```sh
