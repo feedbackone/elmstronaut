@@ -215,10 +215,10 @@ Let's walk trough the important bits:
 
 - Then, we define the `Flags` type and its decoder.
 
-  > [!TIP]
-  > Feel free to use the amazing [NoRedInk/elm-json-decode-pipeline](https://package.elm-lang.org/packages/NoRedInk/elm-json-decode-pipeline/) package if you want.
-
 - Lastly, we pass the decoder we defined above and the `flags` argument of the `init` function to the `Json.Decode.decodeValue` function. If the decoding succeeds, the `initialCount` would get the value of the `initial` prop. Otherwise, it will be set to `0`. No runtime errors. Beauty!
+
+> [!TIP]
+> [NoRedInk/elm-json-decode-pipeline](https://package.elm-lang.org/packages/NoRedInk/elm-json-decode-pipeline/) package immensely simplifies the process of writing decoders.
 
 ## Using ports
 
