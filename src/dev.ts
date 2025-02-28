@@ -9,4 +9,4 @@
  * is that it needs to reside in a file that can be imported
  * by both server and client code.
  */
-export const CREATOR_MODE = true;
+export const CREATOR_MODE = false;
