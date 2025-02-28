@@ -69,16 +69,8 @@ async function compileElm(
     throw new Error(missingElmJson(elmJsonPath));
   }
 
-  const elmExecutable = path.join(
-    cwd,
-    "node_modules",
-    "elmstronaut",
-    "node_modules",
-    "elm",
-    "bin",
-    "elm",
-  );
-  // [elmExecutable]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/node_modules/elmstronaut/node_modules/elm/bin/elm"
+  const elmExecutable = path.join(cwd, "node_modules", "elm", "bin", "elm");
+  // [elmExecutable]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/node_modules/elm/bin/elm"
 
   // Show a helpful error message if `elm` executable is missing
   if (!existsSync(elmExecutable)) {

@@ -14,6 +14,9 @@ importers:
       astro:
         specifier: ^5.3.0
         version: 5.3.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.4)(typescript@5.7.3)
+      elm:
+        specifier: 0.19.1-6
+        version: 0.19.1-6
       elmstronaut:
         specifier: link:../../
         version: link:../..
@@ -56,6 +59,26 @@ packages:
   '@babel/types@7.26.7':
     resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
+
+  '@elm_binaries/darwin_arm64@0.19.1-0':
+    resolution: {integrity: sha512-mjbsH7BNHEAmoE2SCJFcfk5fIHwFIpxtSgnEAqMsVLpBUFoEtAeX+LQ+N0vSFJB3WAh73+QYx/xSluxxLcL6dA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@elm_binaries/darwin_x64@0.19.1-0':
+    resolution: {integrity: sha512-QGUtrZTPBzaxgi9al6nr+9313wrnUVHuijzUK39UsPS+pa+n6CmWyV/69sHZeX9qy6UfeugE0PzF3qcUiy2GDQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@elm_binaries/linux_x64@0.19.1-0':
+    resolution: {integrity: sha512-T1ZrWVhg2kKAsi8caOd3vp/1A3e21VuCpSG63x8rDie50fHbCytTway9B8WHEdnBFv4mYWiA68dzGxYCiFmU2w==}
+    cpu: [x64]
+    os: [linux]
+
+  '@elm_binaries/win32_x64@0.19.1-0':
+    resolution: {integrity: sha512-yDleiXqSE9EcqKtd9SkC/4RIW8I71YsXzMPL79ub2bBPHjWTcoyyeBbYjoOB9SxSlArJ74HaoBApzT6hY7Zobg==}
+    cpu: [x64]
+    os: [win32]
 
   '@emnapi/runtime@1.3.1':
     resolution: {integrity: sha512-kEBmG8KyqtxJZv+ygbEim+KCGtIq1fC22Ms3S4ziXmYKm8uyoLX0MHONVKwp+9opg390VaKRNt4a7A9NwmpNhw==}
@@ -752,6 +775,11 @@ packages:
   dset@3.1.4:
     resolution: {integrity: sha512-2QF/g9/zTaPDc3BjNcVTGoBbXBgYfMTTceLaYcFJ/W9kggFUkhxD/hMEeuLKbugyef9SqAx8cpgwlIP/jinUTA==}
     engines: {node: '>=4'}
+
+  elm@0.19.1-6:
+    resolution: {integrity: sha512-mKYyierHICPdMx/vhiIacdPmTPnh889gjHOZ75ZAoCxo3lZmSWbGP8HMw78wyctJH0HwvTmeKhlYSWboQNYPeQ==}
+    engines: {node: '>=7.0.0'}
+    hasBin: true
 
   emoji-regex-xs@1.0.0:
     resolution: {integrity: sha512-LRlerrMYoIDrT6jgpeZ2YYl/L8EulRTt5hQcYjy5AInh7HWXKimpqx68aknBFpGL2+/IcogTcaydJEgaTmOpDg==}
@@ -1722,6 +1750,18 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
+  '@elm_binaries/darwin_arm64@0.19.1-0':
+    optional: true
+
+  '@elm_binaries/darwin_x64@0.19.1-0':
+    optional: true
+
+  '@elm_binaries/linux_x64@0.19.1-0':
+    optional: true
+
+  '@elm_binaries/win32_x64@0.19.1-0':
+    optional: true
+
   '@emnapi/runtime@1.3.1':
     dependencies:
       tslib: 2.8.1
@@ -2330,6 +2370,13 @@ snapshots:
   dlv@1.1.3: {}
 
   dset@3.1.4: {}
+
+  elm@0.19.1-6:
+    optionalDependencies:
+      '@elm_binaries/darwin_arm64': 0.19.1-0
+      '@elm_binaries/darwin_x64': 0.19.1-0
+      '@elm_binaries/linux_x64': 0.19.1-0
+      '@elm_binaries/win32_x64': 0.19.1-0
 
   emoji-regex-xs@1.0.0: {}
 

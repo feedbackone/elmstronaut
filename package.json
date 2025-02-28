@@ -29,8 +29,7 @@
     "ci": "pnpm run build && pnpm run check-format-and-lint && pnpm run check-exports && pnpm run test"
   },
   "dependencies": {
-    "cross-spawn": "^7.0.6",
-    "elm": "0.19.1-6"
+    "cross-spawn": "^7.0.6"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.17.3",
@@ -40,10 +39,14 @@
     "@types/node": "^22.13.1",
     "astro": "^5.2.5",
     "copyfiles": "^2.4.1",
+    "elm": "0.19.1-6",
     "rimraf": "^6.0.1",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
     "vitest": "^3.0.6"
+  },
+  "peerDependencies": {
+    "elm": "0.19.1-6"
   },
   "homepage": "https://github.com/feedbackone/elmstronaut",
   "bugs": {
