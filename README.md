@@ -1,6 +1,6 @@
 # Elmstronaut 🌳👨‍🚀
 
-> That's one small step for (a) man, one giant leap for Elm-kind.
+> One small step for (a) man, one giant leap for Elm-kind.
 
 An Astro integration that enables rendering of Elm modules as Astro components.
 
