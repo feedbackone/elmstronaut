@@ -57,6 +57,7 @@ async function compileElm(
 ): Promise<string> {
   // Example
   // [filePath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/src/Greeting/Hello.elm"
+  filePath = path.normalize(filePath);
 
   const cwd = process.cwd();
   // [cwd]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal"
@@ -80,11 +81,12 @@ async function compileElm(
   const elmDir = path.join(cwd, "src", "elm");
   // [elmDir]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm"
 
-  const elmFileRelativePath = filePath.replace(`${elmDir}/`, "");
+  const elmFileRelativePath = filePath.replace(`${elmDir}/`, "").replace(`${elmDir}\\`, "");
   // [elmFileRelativePath]: "Greeting/Hello.elm"
 
   const elmModuleName = elmFileRelativePath
     .replace("/", ".")
+    .replace("\\", ".")
     .replace(".elm", "");
   // [elmModulePath]: "Greeting.Hello"
 
