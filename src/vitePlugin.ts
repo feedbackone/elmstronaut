@@ -81,12 +81,11 @@ async function compileElm(
   const elmDir = path.join(cwd, "src", "elm");
   // [elmDir]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm"
 
-  const elmFileRelativePath = filePath.replace(`${elmDir}/`, "").replace(`${elmDir}\\`, "");
+  const elmFileRelativePath = filePath.replace(`${elmDir}${path.sep}`, "");
   // [elmFileRelativePath]: "Greeting/Hello.elm"
 
   const elmModuleName = elmFileRelativePath
-    .replace("/", ".")
-    .replace("\\", ".")
+    .replace(path.sep, ".")
     .replace(".elm", "");
   // [elmModulePath]: "Greeting.Hello"
 
