@@ -29,7 +29,7 @@ pnpm add elm elmstronaut
 
 This guide assumes you already have an Astro project set up. If not, please run `pnpm create astro@latest` first and come back when you're ready.
 
-- Create a folder called `elm` under the `src` directory. Your Elm files will live here.
+- Create a folder called `elm` under the `src` directory. Your Elm files will live there.
 - Make sure there is an _elm.json_ file in the root directory. Run `pnpm elm init` if you haven't initialized your Elm project yet.
 - Modify `"source-directories"` from `src` to `src/elm` in the _elm.json_
 
