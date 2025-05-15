@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- Fixed the issue where Elm executable couldn't be found (#1)
+- Fixed the issue where Elm executable couldn't be found ([#1](https://github.com/feedbackone/elmstronaut/issues/1))
 
 ## 0.1.0
 
