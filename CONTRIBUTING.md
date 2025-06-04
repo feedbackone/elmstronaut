@@ -33,7 +33,7 @@ To get started, follow the [installation](/README.md#installation) and [setup](R
     +  import elmstronaut from "../../src/index";
     ```
 
-6. In the `const.ts` (located in the `src` directory of the cloned repo), set `CREATOR_MODE` to `true`.
+6. In the `dev.ts` (located in the `src` directory of the cloned repo), set `CREATOR_MODE` to `true`.
 
-And you're done! 🎉  
+And you're done! 🎉
 Thanks again checking out this page! You're awesome!
