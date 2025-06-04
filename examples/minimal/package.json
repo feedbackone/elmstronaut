@@ -11,7 +11,7 @@
     "@tailwindcss/vite": "^4.1.6",
     "astro": "^5.7.12",
     "elm": "0.19.1-6",
-    "elmstronaut": "link:../../",
+    "elmstronaut": "^0.1.2",
     "tailwindcss": "^4.1.6"
   }
 }
