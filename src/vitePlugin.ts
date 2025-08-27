@@ -14,7 +14,9 @@ import { hashFromPath } from "./utils.js";
  *
  * @param isAstroDevMode - true if Astro is running in development mode
  */
-export default function vitePlugin(isAstroDevMode: boolean): PluginOption {
+export default function vitePlugin(
+  elmstronautOptions: ElmstronautOptions,
+): PluginOption {
   return {
     name: "vite-plugin-elmstronaut",
     async transform(code, id, options) {
@@ -41,7 +43,7 @@ export default function vitePlugin(isAstroDevMode: boolean): PluginOption {
       }
 
       try {
-        const js = await compileElm(id, isAstroDevMode);
+        const js = await compileElm(id, elmstronautOptions);
         return js;
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : "";
@@ -53,7 +55,7 @@ export default function vitePlugin(isAstroDevMode: boolean): PluginOption {
 
 async function compileElm(
   filePath: string,
-  isAstroDevMode: boolean,
+  elmstronautOptions: ElmstronautOptions,
 ): Promise<string> {
   // Example
   // [filePath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/src/Greeting/Hello.elm"
@@ -64,7 +66,8 @@ async function compileElm(
   const cwd = process.cwd();
   // [cwd]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal"
 
-  const elmJsonPath = path.join(cwd, "elm.json");
+  const elmJsonPath =
+    elmstronautOptions.pathToElmJson ?? path.join(cwd, "elm.json");
   // [elmJsonPath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/elm.json"
 
   // Show a helpful error message if `elm.json` is missing
@@ -72,7 +75,9 @@ async function compileElm(
     throw new Error(missingElmJson(elmJsonPath));
   }
 
-  const elmExecutable = path.join(cwd, "node_modules", "elm", "bin", "elm");
+  const elmExecutable =
+    elmstronautOptions.pathToElm ??
+    path.join(cwd, "node_modules", "elm", "bin", "elm");
   // [elmExecutable]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/node_modules/elm/bin/elm"
 
   // Show a helpful error message if `elm` executable is missing
@@ -118,7 +123,8 @@ async function compileElm(
         elmFileRelativePath,
         "--output",
         outputFilePath,
-        isAstroDevMode ? "" : "--optimize",
+        elmstronautOptions.optimize ? "--optimize" : "",
+        elmstronautOptions.debug ? "--debug" : "",
       ].filter((s) => s),
       {
         // Execute `elm make` from the same folder where `elm.json` is located.
