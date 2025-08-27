@@ -25,7 +25,9 @@ import vitePlugin from "./vitePlugin.js";
  * });
  * ```
  */
-export default function elmstronaut(): AstroIntegration {
+export default function elmstronaut(
+  elmstronautOptions: ElmstronautOptions = {},
+): AstroIntegration {
   return {
     name: "elmstronaut",
     hooks: {
@@ -35,6 +37,11 @@ export default function elmstronaut(): AstroIntegration {
         injectScript,
         updateConfig,
       }) => {
+        const optionsWithDefaults = setOptionDefaults(
+          command,
+          elmstronautOptions,
+        );
+
         // Inject the bootstrap script.
         // We need this to properly handle `window.onElmInit` callback definition.
         injectScript(
@@ -64,7 +71,7 @@ export default function elmstronaut(): AstroIntegration {
               ],
             },
             server: getViteServerConfig(),
-            plugins: [vitePlugin(command === "dev")],
+            plugins: [vitePlugin(optionsWithDefaults)],
           },
         });
       },
@@ -126,4 +133,17 @@ function watchBootstrapScript(server: ViteDevServer): void {
       server.restart();
     }
   });
+}
+
+function setOptionDefaults(
+  command: "dev" | "build" | "preview" | "sync",
+  elmstronautOptions: ElmstronautOptions,
+): ElmstronautOptions {
+  elmstronautOptions.optimize ??=
+    command !== "dev" && !elmstronautOptions.debug;
+
+  elmstronautOptions.debug ??=
+    command === "dev" && !elmstronautOptions.optimize;
+
+  return elmstronautOptions;
 }

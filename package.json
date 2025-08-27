@@ -2,9 +2,7 @@
   "name": "elmstronaut",
   "version": "0.1.2",
   "description": "Render Elm modules as Astro components",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "type": "module",
   "exports": {
     ".": {
@@ -58,11 +56,7 @@
     "type": "git",
     "url": "git+https://github.com/feedbackone/elmstronaut.git"
   },
-  "keywords": [
-    "astro",
-    "astro-integration",
-    "elm"
-  ],
+  "keywords": ["astro", "astro-integration", "elm"],
   "contributors": [
     {
       "name": "Henrikh Kantuni",
