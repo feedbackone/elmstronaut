@@ -36,4 +36,4 @@ To get started, follow the [installation](/README.md#installation) and [setup](R
 6. In the `dev.ts` (located in the `src` directory of the cloned repo), set `CREATOR_MODE` to `true`.
 
 And you're done! 🎉
-Thanks again checking out this page! You're awesome!
+Thanks again for checking out this page! You're awesome!
