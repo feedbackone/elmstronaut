@@ -18,6 +18,13 @@ interface ElmApp {
 
 type ElmPort = Incoming | Outgoing;
 
+type ElmstronautOptions = {
+  pathToElm?: string;
+  pathToElmJson?: string;
+  debug?: boolean;
+  optimize?: boolean;
+};
+
 type Incoming = {
   send(...args): void;
 
