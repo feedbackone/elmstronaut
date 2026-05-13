@@ -60,12 +60,16 @@ async function compileElm(
 
   // Normalize the file path (i.e. resolve '..', '.', '\\\\', etc.)
   const normalizedFilePath = path.normalize(filePath);
+  // [normalizedFilePath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/src/Greeting/Hello.elm"
 
   const cwd = process.cwd();
   // [cwd]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal"
 
-  const elmJsonPath = path.join(cwd, "elm.json");
-  // [elmJsonPath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/elm.json"
+  const elmDir = path.join(cwd, "src", "elm");
+  // [elmDir]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm"
+
+  const elmJsonPath = path.join(elmDir, "elm.json");
+  // [elmJsonPath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/elm.json"
 
   // Show a helpful error message if `elm.json` is missing
   if (!existsSync(elmJsonPath)) {
@@ -80,22 +84,27 @@ async function compileElm(
     throw new Error(missingElmExecutable(elmExecutable));
   }
 
-  const elmDir = path.join(cwd, "src", "elm");
-  // [elmDir]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm"
-
   const elmFileRelativePath = normalizedFilePath.replace(
     `${elmDir}${path.sep}`,
     "",
   );
-  // [elmFileRelativePath]: "Greeting/Hello.elm"
+  // [elmFileRelativePath]: "src/Greeting/Hello.elm"
 
   const elmModuleName = elmFileRelativePath
+    .replace(`src${path.sep}`, "")
     .replace(path.sep, ".")
     .replace(".elm", "");
-  // [elmModulePath]: "Greeting.Hello"
+  // [elmModuleName]: "Greeting.Hello"
 
-  const outputFilePath = path.join(elmDir, `${elmModuleName}-${Date.now()}.js`);
-  // [outputFilePath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/Greeting.Hello-1739905905593.js"
+  const now = Date.now();
+  // [now]: 1739905905593
+
+  const outputFilePath = path.join(
+    elmDir,
+    "src",
+    `${elmModuleName.split(".").join(path.sep)}-${now}.js`,
+  );
+  // [outputFilePath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/src/Greeting/Hello-1739905905593.js"
 
   if (CREATOR_MODE) {
     console.debug("[compileElm]", {
@@ -119,7 +128,9 @@ async function compileElm(
         "--output",
         outputFilePath,
         isAstroDevMode ? "" : "--optimize",
-      ].filter((s) => s),
+      ]
+        // Remove empty strings
+        .filter((s) => s),
       {
         // Execute `elm make` from the same folder where `elm.json` is located.
         cwd: elmDir,
@@ -130,7 +141,12 @@ async function compileElm(
     // from different processes can collide, producing incomprehendable error messages.
     // Instead, we'll create a temporary file for each component and pipe the `stderr`
     // from the `elm make` there. We'll then print the contents on the `close` event.
-    const logFilePath = path.join(elmDir, `${elmModuleName}-${Date.now()}.log`);
+    const logFilePath = path.join(
+      elmDir,
+      "src",
+      `${elmModuleName.split(".").join(path.sep)}-${now}.log`,
+    );
+    // [logFilePath]: "/Users/Henrikh/Desktop/elmstronaut/examples/minimal/src/elm/src/Greeting/Hello-1739905905593.log"
     elmMake.stderr?.pipe(createWriteStream(logFilePath));
 
     elmMake.on("error", async (err) => {
@@ -138,13 +154,13 @@ async function compileElm(
     });
 
     elmMake.on("close", async (code) => {
-      if (code !== 0) {
+      if (code === 0) {
+        resolve();
+      } else {
         const log = await readFile(logFilePath, "utf-8");
         const errorMessage = `Elm compiler exited with code ${code}:\n\n${prettify(log)}`;
 
         reject(new Error(errorMessage));
-      } else {
-        resolve();
       }
 
       // Remove the temporary log file.
