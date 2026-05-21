@@ -4,7 +4,7 @@
 - [ x ] Upgrade `@changesets/cli`
 - [ x ] Upgrade `@types/node`
 - [ x ] Upgrade `rimraf`
-- [ ] Upgrade `vitest`
+- [ x ] Upgrade `vitest`
 - [ ] Remove `@biomejs/biome`. Use `oxfmt` instead
 - [ ] Upgrade `typescript`
 - [ ] Upgrade `vite`
