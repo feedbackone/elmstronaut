@@ -34,7 +34,7 @@
     "cross-spawn": "^7.0.6"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.17.4",
+    "@arethetypeswrong/cli": "^0.18.1",
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.3",
     "@types/cross-spawn": "^6.0.6",
