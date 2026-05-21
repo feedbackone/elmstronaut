@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] Upgrade `@arethetypeswrong/cli`
-- [ ] Upgrade `@changesets/cli`
+- [ x ] Upgrade `@arethetypeswrong/cli`
+- [ x ] Upgrade `@changesets/cli`
 - [ ] Upgrade `@types/node`
 - [ ] Upgrade `rimraf`
 - [ ] Upgrade `vitest`
