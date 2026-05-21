@@ -2,8 +2,8 @@
 
 - [ x ] Upgrade `@arethetypeswrong/cli`
 - [ x ] Upgrade `@changesets/cli`
-- [ ] Upgrade `@types/node`
-- [ ] Upgrade `rimraf`
+- [ x ] Upgrade `@types/node`
+- [ x ] Upgrade `rimraf`
 - [ ] Upgrade `vitest`
 - [ ] Remove `@biomejs/biome`. Use `oxfmt` instead
 - [ ] Upgrade `typescript`
