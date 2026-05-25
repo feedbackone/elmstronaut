@@ -5,8 +5,8 @@
 - [ x ] Upgrade `@types/node`
 - [ x ] Upgrade `rimraf`
 - [ x ] Upgrade `vitest`
-- [ ] Remove `@biomejs/biome`. Use `oxfmt` instead
-- [ ] Upgrade `typescript`
+- [ x ] Remove `@biomejs/biome`. Use `oxfmt` instead
+- [ x ] Upgrade `typescript`
 - [ ] Upgrade `vite`
 - [ ] Upgrade `astro`
 - [ ] Verify that `@source` is still needed for Tailwind

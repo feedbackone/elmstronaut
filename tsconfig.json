@@ -10,6 +10,7 @@
     /* Emit */
     "declaration": true,
     "sourceMap": true,
+    "rootDir": "src",
     "outDir": "dist",
 
     /* Interop Constraints */
