@@ -1,7 +1,6 @@
 declare module "*.elm" {
   // We couldn't find a proper type for an Astro component.
   // Please open a PR if you know of a better option.
-  // biome-ignore lint/suspicious/noExplicitAny: ^
   const Component: any;
   export default Component;
 }

@@ -2,6 +2,30 @@
   "name": "elmstronaut",
   "version": "0.1.2",
   "description": "Render Elm modules as Astro components",
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "elm"
+  ],
+  "homepage": "https://github.com/feedbackone/elmstronaut",
+  "bugs": {
+    "url": "https://github.com/feedbackone/elmstronaut/issues"
+  },
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Henrikh Kantuni",
+      "email": "henrikh@feedback.one"
+    },
+    {
+      "name": "Shahen Kosyan",
+      "email": "shahen@feedback.one"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feedbackone/elmstronaut.git"
+  },
   "files": [
     "dist"
   ],
@@ -22,11 +46,11 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "format": "biome format --fix .",
+    "format": "oxfmt .",
     "test": "vitest run",
     "build": "rimraf dist && tsc && pnpm run copy-static-folder",
     "copy-static-folder": "copyfiles -all --up 1 src/static/** dist",
-    "check-format-and-lint": "biome check ./src",
+    "check-format-and-lint": "oxfmt --check .",
     "check-exports": "attw --profile node16 --ignore-rules=cjs-resolves-to-esm --pack .",
     "ci": "pnpm run build && pnpm run check-format-and-lint && pnpm run check-exports && pnpm run test"
   },
@@ -35,13 +59,13 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.1",
-    "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.31.0",
     "@types/cross-spawn": "^6.0.6",
     "@types/node": "^25.9.1",
     "astro": "^5.7.12",
     "copyfiles": "^2.4.1",
     "elm": "0.19.1-6",
+    "oxfmt": "^0.51.0",
     "rimraf": "^6.1.3",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
@@ -49,29 +73,5 @@
   },
   "peerDependencies": {
     "elm": "0.19.1-6"
-  },
-  "homepage": "https://github.com/feedbackone/elmstronaut",
-  "bugs": {
-    "url": "https://github.com/feedbackone/elmstronaut/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/feedbackone/elmstronaut.git"
-  },
-  "keywords": [
-    "astro",
-    "astro-integration",
-    "elm"
-  ],
-  "contributors": [
-    {
-      "name": "Henrikh Kantuni",
-      "email": "henrikh@feedback.one"
-    },
-    {
-      "name": "Shahen Kosyan",
-      "email": "shahen@feedback.one"
-    }
-  ],
-  "license": "MIT"
+  }
 }
