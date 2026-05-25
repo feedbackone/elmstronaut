@@ -7,10 +7,25 @@
 - [ x ] Upgrade `vitest`
 - [ x ] Remove `@biomejs/biome`. Use `oxfmt` instead
 - [ x ] Upgrade `typescript`
-- [ ] Upgrade `vite`
-- [ ] Upgrade `astro`
+- [ x ] Upgrade `vite`
+- [ x ] Upgrade `astro`
 - [ ] Verify that `@source` is still needed for Tailwind
 - [ ] Add support for rendering named slots
+
+---
+
+- Vite is upgraded to 7.3.3 since astro 6 supports vite 7
+
+- Example upgrades
+  -
+  - "astro": "^6.3.7"
+  - "@tailwindcss/vite": "^4.3.0"
+  - "tailwindcss": "^4.3.0"
+  ## Commands
+        fnm install 22
+        fnm use 22
+        rm -rf node_modules
+        pnpm i
 
 ---
 
