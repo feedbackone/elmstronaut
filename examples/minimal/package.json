@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.7",
+    "astro": "^6.4.2",
     "elm": "0.19.1-6",
     "elmstronaut": "link:../../",
     "tailwindcss": "^4.3.0"

@@ -68,6 +68,14 @@ export default function clientSideRenderer(element: HTMLElement) {
         flags: props,
       });
 
+      // Render named slots
+      for (const [slotName, slotDomString] of Object.entries(slots)) {
+        const slotDomElement = document.querySelector(`slot[name="${slotName}"]`);
+        if (slotDomElement) {
+          slotDomElement.outerHTML = slotDomString;
+        }
+      }
+
       registerInitCallback(elmModuleName, app);
     } catch (exception) {
       renderError(element, elmModuleName, exception);
@@ -90,11 +98,7 @@ function registerInitCallback(elmModuleName: string, app: ElmApp) {
   }
 }
 
-function renderError(
-  element: HTMLElement,
-  elmModuleName: string,
-  exception: unknown,
-) {
+function renderError(element: HTMLElement, elmModuleName: string, exception: unknown) {
   const pre = document.createElement("pre");
   if (exception instanceof Error) {
     const { stack } = exception;
