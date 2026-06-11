@@ -1,4 +1,7 @@
-/* Tailwind (with disabled Preflight) */
+/**
+ * Tailwind (with disabled Preflight)
+ * Only needed for this example. Please use `@import "tailwindcss"` instead.
+ */
 @layer theme, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);

@@ -1,15 +1,15 @@
 /// <reference path="./static/elmstronaut.d.ts" />
 
-import { CREATOR_MODE } from "./dev.js";
+import { CREATOR_MODE } from "./dev.js"
 
 interface ElmModule {
-  __name: string;
+  __name: string
   init: (options: {
-    node: HTMLElement;
+    node: HTMLElement
     // Although flags could be of any type, Record is used here
     // because we're passing props, which are always records.
-    flags?: Record<string, unknown>;
-  }) => ElmApp;
+    flags?: Record<string, unknown>
+  }) => ElmApp
 }
 
 declare global {
@@ -18,7 +18,7 @@ declare global {
      * Elm apps that have been initialized are kept in this queue
      * until `window.onElmInit` is defined.
      */
-    __elmInitQueue: Array<{ elmModuleName: string; app: ElmApp }>;
+    __elmInitQueue: Array<{ elmModuleName: string; app: ElmApp }>
   }
 }
 
@@ -39,11 +39,11 @@ export default function clientSideRenderer(element: HTMLElement) {
         props,
         slots,
         metadata,
-      });
+      })
     }
 
     if (!Component) {
-      return;
+      return
     }
 
     const isElmModule =
@@ -51,64 +51,65 @@ export default function clientSideRenderer(element: HTMLElement) {
       "__name" in Component &&
       typeof Component.__name === "string" &&
       "init" in Component &&
-      typeof Component.init === "function";
+      typeof Component.init === "function"
 
     if (!isElmModule) {
-      return;
+      return
     }
 
     // NOTE: TypeScript should ideally do the type narrowing for us here.
-    const elmModule = Component as ElmModule;
-    const elmModuleName = elmModule.__name;
+    const elmModule = Component as ElmModule
+    const elmModuleName = elmModule.__name
 
     try {
       // Initialize Elm component.
       const app = elmModule.init({
         node: element,
         flags: props,
-      });
+      })
 
       // Render named slots
       for (const [slotName, slotDomString] of Object.entries(slots)) {
-        const slotDomElement = document.querySelector(`slot[name="${slotName}"]`);
+        const slotDomElement = document.querySelector(`slot[name="${slotName}"]`)
+        console.log({ slotName, slotDomString, slotDomElement })
         if (slotDomElement) {
-          slotDomElement.outerHTML = slotDomString;
+          slotDomElement.outerHTML = slotDomString
         }
       }
 
-      registerInitCallback(elmModuleName, app);
+      registerInitCallback(elmModuleName, app)
     } catch (exception) {
-      renderError(element, elmModuleName, exception);
+      renderError(element, elmModuleName, exception)
     }
-  };
+  }
 }
 
 function registerInitCallback(elmModuleName: string, app: ElmApp) {
   // `window.onElmInit` is already defined
   if (typeof window.onElmInit === "function") {
     // All good. Call the callback!
-    window.onElmInit(elmModuleName, app);
+    window.onElmInit(elmModuleName, app)
   }
   // `window.onElmInit` is not yet defined
   else {
     // Add the module name and the initialized app to the queue.
     // When the user defines the callback, it will automatically
     // be called on all items in the queue.
-    window.__elmInitQueue.push({ elmModuleName, app });
+    window.__elmInitQueue.push({ elmModuleName, app })
   }
 }
 
 function renderError(element: HTMLElement, elmModuleName: string, exception: unknown) {
-  const pre = document.createElement("pre");
+  const pre = document.createElement("pre")
   if (exception instanceof Error) {
-    const { stack } = exception;
-    pre.textContent = `Module "${elmModuleName}" cannot be initialized.\n\n${stack}`;
+    const { stack } = exception
+    pre.textContent = `Module "${elmModuleName}" cannot be initialized.\n\n${stack}`
   } else {
-    pre.textContent = `Module "${elmModuleName}" cannot be initialized.\n\n${exception}`;
+    pre.textContent = `Module "${elmModuleName}" cannot be initialized.\n\n${exception}`
   }
   Object.assign(pre.style, {
     borderLeft: "1px solid red",
     paddingLeft: "24px",
-  });
-  element.appendChild(pre);
+  })
+  element.appendChild(pre)
 }

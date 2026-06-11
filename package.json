@@ -1,6 +1,6 @@
 {
   "name": "elmstronaut",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Render Elm modules as Astro components",
   "keywords": [
     "astro",
@@ -46,13 +46,13 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "format": "oxfmt .",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "test": "vitest run",
     "build": "rimraf dist && tsc && pnpm run copy-static-folder",
     "copy-static-folder": "copyfiles -all --up 1 src/static/** dist",
-    "check-format-and-lint": "oxfmt --check .",
     "check-exports": "attw --profile node16 --ignore-rules=cjs-resolves-to-esm --pack .",
-    "ci": "pnpm run build && pnpm run check-format-and-lint && pnpm run check-exports && pnpm run test"
+    "ci": "pnpm run fmt:check && pnpm run test && pnpm run build && pnpm run check-exports"
   },
   "dependencies": {
     "cross-spawn": "^7.0.6"

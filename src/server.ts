@@ -1,12 +1,12 @@
-import type { AstroComponentMetadata, SSRLoadedRendererValue } from "astro";
-import { CREATOR_MODE } from "./dev.js";
-import { Elmstronaut } from "./global.js";
-import { decodeBase64, hashFromContent } from "./utils.js";
+import type { AstroComponentMetadata, SSRLoadedRendererValue } from "astro"
+import { CREATOR_MODE } from "./dev.js"
+import { Elmstronaut } from "./global.js"
+import { decodeBase64, hashFromContent } from "./utils.js"
 
 type StaticMarkup = {
-  html: string;
-  attrs?: Record<string, string>;
-};
+  html: string
+  attrs?: Record<string, string>
+}
 
 /**
  * Server-side renderer for Elm components in Astro.
@@ -33,29 +33,29 @@ const serverSideRenderer: SSRLoadedRendererValue = {
         props,
         slots,
         metadata,
-      });
+      })
     }
 
     if (typeof Component !== "string") {
-      return false;
+      return false
     }
 
     // Scenario 3
     // When running `astro build`, Astro will encode the Elm code as
     // base64 data URL with "application/octet-stream" MIME type.
-    const APPLICATION_OCTET_STREAM_PREFIX = "data:application/octet-stream;base64,";
+    const APPLICATION_OCTET_STREAM_PREFIX = "data:application/octet-stream;base64,"
     if (Component.startsWith(APPLICATION_OCTET_STREAM_PREFIX)) {
       // We don't have access to the file path here, so we can't check the file extension
       // or if the file exists. But we were saving the hashes of all Elm files along the way,
       // so we just need to verify that we've seen that hash before.
-      const base64code = Component.slice(APPLICATION_OCTET_STREAM_PREFIX.length);
-      const code = decodeBase64(base64code);
-      const hash = hashFromContent(code);
-      return Elmstronaut.cache.has(hash);
+      const base64code = Component.slice(APPLICATION_OCTET_STREAM_PREFIX.length)
+      const code = decodeBase64(base64code)
+      const hash = hashFromContent(code)
+      return Elmstronaut.cache.has(hash)
     }
 
     // Scenario 1 & 2
-    return Component.split("?").at(0)?.endsWith(".elm") ?? false;
+    return Component.split("?").at(0)?.endsWith(".elm") ?? false
   },
   renderToStaticMarkup: async (
     Component: string,
@@ -69,7 +69,7 @@ const serverSideRenderer: SSRLoadedRendererValue = {
         props,
         slots,
         metadata,
-      });
+      })
     }
 
     return {
@@ -78,12 +78,12 @@ const serverSideRenderer: SSRLoadedRendererValue = {
       // the nested component is fully rendered.
       html: slots.fallback ?? " ",
       attrs: {},
-    };
+    }
   },
   /**
    * Indicates whether the renderer supports Astro's static slot optimization.
    * When true, Astro prevents the removal of nested slots within islands.
    */
-  supportsAstroStaticSlot: true,
-};
-export default serverSideRenderer;
+  supportsAstroStaticSlot: false,
+}
+export default serverSideRenderer

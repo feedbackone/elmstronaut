@@ -1,4 +1,4 @@
-module Greeting.Hello exposing (main)
+module Hello exposing (main)
 
 import Html exposing (Html, text)
 

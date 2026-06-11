@@ -1,0 +1,18 @@
+---
+import { Picture } from "astro:assets";
+import Gallery from "../elm/src/Gallery.elm";
+import Layout from "../layouts/Layout.astro";
+import elm from "../assets/elm.jpg";
+---
+
+<Layout>
+  <Gallery client:load>
+    <div slot="photo1">1</div>
+    <Picture
+      slot="photo2"
+      src={elm}
+      alt="Photo by Mikołaj on Unsplash"
+      height={400}
+    />
+  </Gallery>
+</Layout>

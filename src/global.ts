@@ -1,12 +1,12 @@
-type GlobalThis = typeof globalThis;
+type GlobalThis = typeof globalThis
 
 interface ExtendedGlobal extends GlobalThis {
   Elmstronaut: {
-    cache: Set<string>;
-  };
+    cache: Set<string>
+  }
 }
 
-const extendedGlobal = globalThis as ExtendedGlobal;
+const extendedGlobal = globalThis as ExtendedGlobal
 
 extendedGlobal.Elmstronaut =
   // We only need to define it once
@@ -14,6 +14,6 @@ extendedGlobal.Elmstronaut =
   // Initial value
   Object.seal({
     cache: new Set<string>(),
-  });
+  })
 
-export const { Elmstronaut } = extendedGlobal;
+export const { Elmstronaut } = extendedGlobal
