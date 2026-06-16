@@ -13,5 +13,9 @@
     "elm": "0.19.1-6",
     "elmstronaut": "link:../../",
     "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.4",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

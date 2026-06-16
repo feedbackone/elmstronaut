@@ -30,9 +30,7 @@ To get started, follow the [installation](/README.md#installation) and [setup](R
 
     The `link:` should point to the cloned `elmstronaut` repo.
 
-4. Run `rm -rf node_modules` to nuke the existing dependencies.
-5. Run `pnpm install` in your Astro project (not the cloned repo). This will link the package to the local version.
-
+4.  Run `pnpm install` in your Astro project (not the cloned repo). This will link the package to the local version.
 
 ### Running development version
 
@@ -45,28 +43,26 @@ To get started, follow the [installation](/README.md#installation) and [setup](R
 
 2.  In the `dev.ts` (located in the `src` directory of the cloned repo), set `CREATOR_MODE` to `true`.
 
-3.  Navigate back to your Astro project and run `pnpm dev`.
-
 ### Running production version
 
-1. Add the following snippet to the _astro.config.mts_
+1. Add the following snippet to the _astro.config.mts_ file
 
-```diff
-export default defineConfig({
-  integrations: [elmstronaut()],
-+  vite: {
-+    server: {
-+      fs: {
-+        // Allow serving files from to the `elmstronaut` project root
-+        allow: ["../.."],
-+      },
-+    },
-+  },
-});
-```
-
-2.  Navigate back to your Astro project and run `pnpm dev`.
+   ```diff
+   export default defineConfig({
+     integrations: [elmstronaut()],
+   +  vite: {
+   +    server: {
+   +      fs: {
+   +        // Allow serving files from to the `elmstronaut` project root
+   +        allow: ["../.."],
+   +      },
+   +    },
+   +  },
+   });
+   ```
 
 ---
+
+Finally, navigate back to your Astro project and run `pnpm dev`.
 And you're done! 🎉  
 Thanks again for checking out this page! You're awesome!

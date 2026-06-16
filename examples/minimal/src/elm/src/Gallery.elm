@@ -1,12 +1,12 @@
 module Gallery exposing (main)
 
 import Html exposing (Html, div, node)
-import Html.Attributes exposing (name)
+import Html.Attributes exposing (class, name)
 
 
 main : Html msg
 main =
-    div []
-        [ node "slot" [ name "photo1" ] []
-        , node "slot" [ name "photo2" ] []
+    div [ class "flex flex-wrap gap-4" ]
+        [ node "slot" [ name "photo-1" ] []
+        , node "slot" [ name "photo-2" ] []
         ]

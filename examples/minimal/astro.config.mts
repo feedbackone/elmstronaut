@@ -1,21 +1,25 @@
-import { defineConfig } from "astro/config"
 import tailwindcss from "@tailwindcss/vite"
-// import elmstronaut from "elmstronaut"
+import { defineConfig } from "astro/config"
+import elmstronaut from "elmstronaut"
 
-/* For development use */
-import elmstronaut from "../../src/index"
+// For development use
+// import elmstronaut from "../../src/index"
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [elmstronaut()],
+  image: {
+    domains: ["images.unsplash.com"],
+  },
   vite: {
     plugins: [tailwindcss()],
 
-    server: {
-      fs: {
-        // Allow serving files from to the `elmstronaut` project root
-        allow: ["../.."],
-      },
-    },
+    // For development use
+    // server: {
+    //   fs: {
+    //     // Allow serving files from to the `elmstronaut` project root
+    //     allow: ["../.."],
+    //   },
+    // },
   },
 })

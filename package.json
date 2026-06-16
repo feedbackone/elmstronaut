@@ -46,13 +46,13 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
-    "test": "vitest run",
+    "ci": "pnpm run format:check && pnpm run build && pnpm run test && pnpm run check-exports",
     "build": "rimraf dist && tsc && pnpm run copy-static-folder",
+    "test": "vitest run",
     "copy-static-folder": "copyfiles -all --up 1 src/static/** dist",
     "check-exports": "attw --profile node16 --ignore-rules=cjs-resolves-to-esm --pack .",
-    "ci": "pnpm run fmt:check && pnpm run test && pnpm run build && pnpm run check-exports"
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
   },
   "dependencies": {
     "cross-spawn": "^7.0.6"

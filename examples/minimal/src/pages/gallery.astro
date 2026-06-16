@@ -1,18 +1,24 @@
 ---
 import { Picture } from "astro:assets";
-import Gallery from "../elm/src/Gallery.elm";
 import Layout from "../layouts/Layout.astro";
-import elm from "../assets/elm.jpg";
+import Gallery from "../elm/src/Gallery.elm";
 ---
 
 <Layout>
   <Gallery client:load>
-    <div slot="photo1">1</div>
     <Picture
-      slot="photo2"
-      src={elm}
-      alt="Photo by Mikołaj on Unsplash"
-      height={400}
+      slot="photo-1"
+      src="https://images.unsplash.com/photo-1547735678-bf0dd870344e"
+      alt="Photo by Vruyr Martirosyan on Unsplash"
+      class="h-auto max-w-80 rounded-lg"
+      inferSize={true}
+    />
+    <Picture
+      slot="photo-2"
+      src="https://images.unsplash.com/photo-1557600032-8ebbe06dc226"
+      alt="Photo by Vruyr Martirosyan on Unsplash"
+      class="h-auto max-w-80 rounded-lg"
+      inferSize={true}
     />
   </Gallery>
 </Layout>

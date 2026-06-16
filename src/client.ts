@@ -70,9 +70,9 @@ export default function clientSideRenderer(element: HTMLElement) {
 
       // Render named slots
       for (const [slotName, slotDomString] of Object.entries(slots)) {
-        const slotDomElement = document.querySelector(`slot[name="${slotName}"]`)
-        console.log({ slotName, slotDomString, slotDomElement })
-        if (slotDomElement) {
+        // NOTE: The slot can be used in multiple places
+        const slotDomElements = document.querySelectorAll(`slot[name="${slotName}"]`)
+        for (const slotDomElement of slotDomElements) {
           slotDomElement.outerHTML = slotDomString
         }
       }
