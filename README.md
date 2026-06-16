@@ -232,9 +232,55 @@ The `elmModuleName` is the module name provided in the Elm file.
 
 For example, if `Hello.elm` would have been located at `src/elm/Greeting/Hello.elm` instead of `src/elm/Hello.elm` as mentioned in the examples above, the `elmModuleName` would be `Greeting.Hello`.
 
-## Rendering named slots (🔥 killer-feature)
+## Rendering named slots
+
+With named slots, you have the ability to bring any component from other parts of Astro (i.e. React, Vue, Svelte, whatever components) into your Elm app. For example, Astro provides a few incredible components for rendering images; namely - `Image` and `Picture`. To use these in our Elm app, you simply need to render them under your Elm component and provide a name for the `slot` attribute like so.
+
+```astro
+---
+import { Picture } from "astro:assets";
+import Gallery from "../elm/src/Gallery.elm";
+---
+
+<Gallery client:load>
+  <Picture
+    slot="photo-1"
+    src="https://images.unsplash.com/photo-1547735678-bf0dd870344e"
+    alt="Photo by Vruyr Martirosyan on Unsplash"
+    class="h-auto max-w-80 rounded-lg"
+    inferSize={true}
+  />
+  <Picture
+    slot="photo-2"
+    src="https://images.unsplash.com/photo-1557600032-8ebbe06dc226"
+    alt="Photo by Vruyr Martirosyan on Unsplash"
+    class="h-auto max-w-80 rounded-lg"
+    inferSize={true}
+  />
+</Gallery>
+```
+
+Then, in your Elm app you simply render a `slot` element with the `name` attribute that matches the component you want to bring in.
+
+```elm
+module Gallery exposing (main)
+
+import Html exposing (Html, div, node)
+import Html.Attributes exposing (class, name)
 
 
+main : Html msg
+main =
+    div [ class "flex flex-wrap gap-4" ]
+        [ node "slot" [ name "photo-1" ] []
+        , node "slot" [ name "photo-2" ] []
+        ]
+```
+
+> [!IMPORTANT]
+> There are a few caveats here:
+> - Named slots cannot by dynamic (Astro doesn't support this ATM)
+> - Named slots must be direct descendents of the Elm component, i.e. having a wrapper `div` will prevent them from being rendered
 
 ## Tailwind support
 
