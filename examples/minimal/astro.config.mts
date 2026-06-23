@@ -15,11 +15,11 @@ export default defineConfig({
     plugins: [tailwindcss()],
 
     // For development use
-    // server: {
-    //   fs: {
-    //     // Allow serving files from to the `elmstronaut` project root
-    //     allow: ["../.."],
-    //   },
-    // },
+    server: {
+      fs: {
+        // Allow serving files from the `elmstronaut` project root
+        allow: ["../.."],
+      },
+    },
   },
 })

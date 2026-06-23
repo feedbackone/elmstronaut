@@ -279,6 +279,7 @@ main =
 
 > [!IMPORTANT]
 > There are a few caveats here:
+>
 > - Named slots cannot by dynamic (Astro doesn't support this ATM)
 > - Named slots must be direct descendents of the Elm component, i.e. having a wrapper `div` will prevent them from being rendered
 
