@@ -21,7 +21,7 @@ An Astro integration that enables rendering of Elm modules as Astro components.
 ## Installation
 
 ```sh
-pnpm add elm elmstronaut
+pnpm astro add elmstronaut
 ```
 
 ## Setup
